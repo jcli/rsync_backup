@@ -84,6 +84,9 @@ class Backup:
         # get date of the last src backup
         try:
             local_log = open(self.src + self.log_file_name.split('/')[-1], 'r')
+            if (len(local_log)==0):
+                print self.src, " no local backup log file."
+                return True            
         except:
             print self.src, " no local backup log file."
             return True
