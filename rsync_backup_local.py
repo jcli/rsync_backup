@@ -1,4 +1,4 @@
-
+#!/usr/bin/python
 import os
 import sys
 import commands
@@ -53,7 +53,7 @@ class Backup:
         else:
             link_dest = '--link-dest=' + self.latest_backup_path
         rsync_command = 'rsync -avh --chmod a+rw -e --delete ' + link_dest + ' '\
-                        + self.src + ' ' + self.target_path + ' &> ' + self.log_file_name
+                        + self.src + ' ' + self.target_path + ' | tee ' + self.log_file_name
         print '\n' + rsync_command + '\n'
         commands.getoutput(rsync_command)
         #append the backup date
